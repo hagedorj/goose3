@@ -123,7 +123,11 @@ class MetasExtractor(BaseExtractor):
         """
         if the article has meta keywords set in the source, use that
         """
-        return self.get_meta_content("meta[name=keywords]")
+        keywords = self.get_meta_content("meta[name=keywords]")
+        keywords += self.get_meta_content("meta[name=news_keywords]")
+        
+        return keywords
+        #return (self.get_meta_content("meta[name=news_keywords]"))
 
     def get_meta_encoding(self):
         """ Parse the meta encoding """
